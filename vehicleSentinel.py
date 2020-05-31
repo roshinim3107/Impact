@@ -54,12 +54,9 @@ bboxPunjab = 74.73,29.35,78.54,31.9
 dates = ["2019-03-01", "2020-04-29", #2019
         "2020-03-01", "2020-04-29"] #2020
 
-
 ### specify these before running the code 
 mdir = "NY" # Main directory
 area = "Delhi" # sub directory 
-
-
 aoi = bboxDelhi 
 
 if not os.path.exists(mdir):
@@ -132,5 +129,3 @@ for i in range(2):
 B02.to_netcdf(mdir + "/" + area + "/B02" + area + ".nc")
 B03.to_netcdf(mdir + "/" + area + "/B03" + area + ".nc")
 B04.to_netcdf(mdir + "/" + area + "/B04" + area + ".nc")
-
-
