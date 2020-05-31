@@ -1,0 +1,57 @@
+import os
+os.environ['PROJ_LIB'] = 'C:\\Users\\Roshini\\anaconda3\\Library\\share'
+import matplotlib as mpl
+import matplotlib.pyplot as plt
+from mpl_toolkits.basemap import Basemap
+import numpy as np
+print("done")
+for i in [1,5,6,7,8,9]:
+    FILE_NAME = 'C:\\Users\\Roshini\\Documents\\NASA space apps covid 19\\MOPITT data\\MOP02J-2020040'+str(i)+'-L2V18.0.3.beta.csv'
+    data = np.loadtxt(FILE_NAME,delimiter=',',skiprows=0).T 
+    lat,long = data[0:2]    #Latitude + Longitude
+    COTotalColumn = data[2] #CO total
+    COMR_Surface = data[3]  #CO Mixing Ratio Surface
+    COMR_Profile = data[4:-1]   #CO Mixing Ratio profile (900hPa-100hPa)
+    RetrievedSurfaceTemperature = data[-1]  #Retrieved Surface Temperature
+    m = Basemap(projection='cyl', resolution='l',
+            llcrnrlat=6, urcrnrlat=38,
+            llcrnrlon=68, urcrnrlon=96)
+    m.drawcoastlines(linewidth=0.5)
+    m.drawcountries(linewidth=0.5)
+    m.drawparallels(np.arange(-90, 91, 45))
+    m.drawmeridians(np.arange(-180, 180, 45), labels=[True,False,False,True])
+    sc = m.scatter(long, lat, c=COTotalColumn, s=1, cmap=plt.cm.jet,
+                edgecolors=None, linewidth=0)
+    cb = m.colorbar()
+    cb.set_label('mol/cm^2')
+    basename = os.path.basename(FILE_NAME)
+    plt.title('{0}\n{1}'.format(basename, 'CO TOTAL COLUMN'))
+    fig = plt.gcf()
+    plt.show()
+    pngfile = "{0}.png".format(basename)
+    fig.savefig(pngfile)
+for i in [10,11,12,13,14,15,20,25,30]:
+    FILE_NAME = 'C:\\Users\\Roshini\\Documents\\NASA space apps covid 19\\MOPITT data\\MOP02J-202004'+str(i)+'-L2V18.0.3.beta.csv'
+    data = np.loadtxt(FILE_NAME,delimiter=',',skiprows=0).T 
+    lat,long = data[0:2]    #Latitude + Longitude
+    COTotalColumn = data[2] #CO total
+    COMR_Surface = data[3]  #CO Mixing Ratio Surface
+    COMR_Profile = data[4:-1]   #CO Mixing Ratio profile (900hPa-100hPa)
+    RetrievedSurfaceTemperature = data[-1]  #Retrieved Surface Temperature
+    m = Basemap(projection='cyl', resolution='l',
+            llcrnrlat=6, urcrnrlat=38,
+            llcrnrlon=68, urcrnrlon=96)
+    m.drawcoastlines(linewidth=0.5)
+    m.drawcountries(linewidth=0.5)
+    m.drawparallels(np.arange(-90, 91, 45))
+    m.drawmeridians(np.arange(-180, 180, 45), labels=[True,False,False,True])
+    sc = m.scatter(long, lat, c=COTotalColumn, s=1, cmap=plt.cm.jet,
+                edgecolors=None, linewidth=0)
+    cb = m.colorbar()
+    cb.set_label('mol/cm^2')
+    basename = os.path.basename(FILE_NAME)
+    plt.title('{0}\n{1}'.format(basename, 'CO TOTAL COLUMN'))
+    fig = plt.gcf()
+    plt.show()
+    pngfile = "{0}.png".format(basename)
+    fig.savefig(pngfile)
