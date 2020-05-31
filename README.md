@@ -13,4 +13,6 @@ conda activate xcube
 
 ## DESCRIPTION
 
-This is a prototype for mapping possible vehicle locations using Sentinel 2 L2A dataset and storing their data in a NETCDF dataset. One can use QGIS to import the dataset and further analyse it as required. 
+This is a prototype for mapping possible vehicle locations using Sentinel 2 L2A dataset and storing their data in a NETCDF dataset. One can use QGIS to import the dataset and further analyse it as required. The images created has two different colors two distinguish between vehicles found during 2019 and 2020.
+
+![](images/showImg.png)
